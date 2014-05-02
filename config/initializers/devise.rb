@@ -231,6 +231,10 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :facebook, '570960863018049', ENV['FACEBOOK_SECRET']
+    # :site => 'https://graph.facebook.com/',
+    # :authorize_path => '/oauth/authorize',
+    # :access_token_path => '/oauth/access_token',
+    # :scope => %w(email read_friendlists)
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
