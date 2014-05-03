@@ -1,11 +1,8 @@
 class HomeController < ApplicationController
 
 def index
-	@user = current_user
 	@userfb = FbGraph::User.fetch(current_user.uid, access_token: current_user.token)
-	@yelp = initYelp
-	@yelp = searchYelp(@yelp, @userfb.location.name)
-	@yelp = mapYelp(@yelp)
+	@yelp = yelpResult
 end
 
 def initYelp
@@ -18,13 +15,14 @@ end
 
 def searchYelp(yelpSession, location)
 	yelpSession.search(location, { term: 'food',
-           											 limit: 3,
+           											 limit: 10,
            											 sort: 2
          													})
 end
 
-def mapYelp(yelpSearch)
-	yelpSearch.businesses.map {|l| {name: l.name, categories:l.categories, rating: l.rating}}
+def yelpResult
+	yelpSearch = searchYelp(initYelp, @userfb.location.name)
+	yelpSearch.businesses.map {|l| {name: l.name, categories:l.categories, rating: l.rating, review_count: l.review_count, url: l.url, phone: l.phone, }}
 end
 
 end

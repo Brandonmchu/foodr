@@ -1,4 +1,4 @@
-<h1>Pick a Place to Eat</h1>
+<h1>FaceBook Stuff</h1>
 <table class="table table-striped">
   <tr>
   	<th>Thing</th>
@@ -17,6 +17,12 @@
 	  <td><%= @userfb.likes.map {|d| d.category} %></td>
   </tr>
 </table>
+<h1>Yelp Stuff</h1>
 <table class="table table-striped">
 	<%= render 'home/yelpSingle', yelp: @yelp %>
 </table>
+ <div id="map-canvas" style="width: 320px; height: 480px;"></div>
+  <div>
+    <input id="address" type="textbox" value=<%= @userfb.location.name %>>
+    <input type="button" value="Encode" onclick="codeAddress()">
+  </div>
