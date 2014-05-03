@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.4'
 
 gem 'devise'
-
+gem 'fb_graph'
 # Use postgresql as the database for Active Record
 gem 'pg'
 

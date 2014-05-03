@@ -1,2 +1,19 @@
-<h1>Home#index</h1>
-<p><%= @user.name %></p>
+<h1>Pick a Place to Eat</h1>
+<table class="table table-striped">
+  <tr>
+  	<th>Thing</th>
+  	<th>Details</th>
+  </tr>
+  <tr>
+		<td>Name</td>
+	  <td><%= @userfb.name %></td>
+  </tr>
+  <tr>
+	  <td>City</td>
+	  <td><%= @userfb.location.name %></td>
+  </tr>
+  <tr>
+	  <td>Things they Like</td>
+	  <td><%= @userfb.likes.map {|d| d.category} %></td>
+  </tr>
+</table>
