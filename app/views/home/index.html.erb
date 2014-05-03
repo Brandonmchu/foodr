@@ -17,3 +17,6 @@
 	  <td><%= @userfb.likes.map {|d| d.category} %></td>
   </tr>
 </table>
+<table class="table table-striped">
+	<%= render 'home/yelpSingle', yelp: @yelp %>
+</table>

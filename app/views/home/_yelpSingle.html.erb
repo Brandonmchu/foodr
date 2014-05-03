@@ -1,0 +1,12 @@
+<% yelp.each do |what| %>
+
+<tr>
+<td><%= what[:name] %></td>
+<td>
+	<% what[:categories].each do |cat| %>
+		<%= cat[0] %>,&nbsp;
+	<% end %>
+</td>
+<td><%= what[:rating] %></td>
+</tr>
+<% end %>

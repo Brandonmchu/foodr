@@ -11,7 +11,7 @@ gem 'pg'
 gem 'rails_12factor', group: :production	
 
 gem 'pry'
-
+gem 'yelp', '~> 2.0.1'
 # Use SCSS for stylesheets
 # gem 'sass-rails', '~> 4.0.2'
 
