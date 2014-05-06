@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  yelp_id: MyString
+  name: MyString
+  spice: 1
+
+two:
+  yelp_id: MyString
+  name: MyString
+  spice: 1

@@ -1,4 +1,5 @@
 Foodr::Application.routes.draw do
+  get "yelp_searches/new"
   # resources :users
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :users

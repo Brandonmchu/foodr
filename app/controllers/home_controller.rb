@@ -2,27 +2,29 @@ class HomeController < ApplicationController
 
 def index
 	@userfb = FbGraph::User.fetch(current_user.uid, access_token: current_user.token)
-	@yelp = yelpResult
+  @location = location
+  if params[:location]
+   @yelp = yelpResult({location: params[:location]})
+  else
+	 @yelp = yelpResult({location: @location})
+  end
 end
 
-def initYelp
-	Yelp::Client.new({ consumer_key: ENV['YELP_CONSUMER_KEY'],
-                     consumer_secret: ENV['YELP_CONSUMER_SECRET'],
-                     token: ENV['YELP_TOKEN'],
-                     token_secret: ENV['YELP_TOKEN_SECRET']
-                  })
+def yelpResult(args)
+  yelpSearch = YelpSearch.searchYelp(args)
+	mappedResults = yelpSearch.businesses.map {|l| {id: l.id, name: l.name, categories:l.categories, rating: l.rating, review_count: l.review_count, url: l.url, phone: l.phone, }}
+  mappedResults.each do |result|
+    Restaurant.create!(yelp_id: result[:id], name: result[:name]) unless Restaurant.find_by_yelp_id(result[:id])
+  end
+  return mappedResults
 end
 
-def searchYelp(yelpSession, location)
-	yelpSession.search(location, { term: 'food',
-           											 limit: 10,
-           											 sort: 2
-         													})
-end
-
-def yelpResult
-	yelpSearch = searchYelp(initYelp, @userfb.location.name)
-	yelpSearch.businesses.map {|l| {name: l.name, categories:l.categories, rating: l.rating, review_count: l.review_count, url: l.url, phone: l.phone, }}
+def location
+  if @userfb.location
+    @userfb.location.name
+  else
+    'Toronto'
+  end
 end
 
 end

@@ -10,19 +10,26 @@
   </tr>
   <tr>
 	  <td>City</td>
-	  <td><%= @userfb.location.name %></td>
+	  <td><%= @location %></td>
   </tr>
   <tr>
 	  <td>Things they Like</td>
 	  <td><%= @userfb.likes.map {|d| d.category} %></td>
   </tr>
 </table>
+
+<%= form_tag root_path, method: :get do %>
+  <%= text_field_tag :location, 'Enter your search query here' %> 
+  <%= submit_tag "go" %>
+<% end %>
+
+
 <h1>Yelp Stuff</h1>
 <table class="table table-striped">
 	<%= render 'home/yelpSingle', yelp: @yelp %>
 </table>
  <div id="map-canvas" style="width: 320px; height: 480px;"></div>
   <div>
-    <input id="address" type="textbox" value=<%= @userfb.location.name %>>
+    <input id="address" type="textbox" value=<%= @location %>>
     <input type="button" value="Encode" onclick="codeAddress()">
   </div>
