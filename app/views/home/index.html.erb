@@ -6,11 +6,11 @@
   </tr>
   <tr>
 		<td>Name</td>
-	  <td><%= @userfb.name %></td>
+	  <td><%= current_user.name %></td>
   </tr>
   <tr>
 	  <td>City</td>
-	  <td><%= @location %></td>
+	  <td><%= current_user.location %></td>
   </tr>
   <tr>
 	  <td>Things they Like</td>
@@ -18,8 +18,13 @@
   </tr>
 </table>
 
+<!-- changes search parameters-->
 <%= form_tag root_path, method: :get do %>
-  <%= text_field_tag :location, 'Enter your search query here' %> 
+  <% if params[:location] %>
+    <%= text_field_tag :location, params[:location] %> 
+  <% else %>
+    <%= text_field_tag :location, current_user.location %> 
+  <% end %>
   <%= submit_tag "go" %>
 <% end %>
 
