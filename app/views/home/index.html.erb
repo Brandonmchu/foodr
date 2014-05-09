@@ -25,6 +25,10 @@
   <% else %>
     <%= text_field_tag :location, current_user.location %> 
   <% end %>
+  <%= number_field_tag :radius, 40000 %>
+  <%= text_field_tag :category %>
+  <%= radio_button_tag :deals, true %>
+  <%= radio_button_tag :deals, false %>
   <%= submit_tag "go" %>
 <% end %>
 

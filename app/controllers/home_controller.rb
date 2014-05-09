@@ -3,9 +3,16 @@ class HomeController < ApplicationController
 def index
 	@userfb = FbGraph::User.fetch(current_user.uid, access_token: current_user.token)
   if params[:location]
-   @yelp = yelpResult({location: params[:location]})
+    @yelp = yelpResult({ 
+                         location: params[:location],
+                         radius: params[:radius],
+                         category: params[:category],
+                         deals: params[:deals]
+                      })
+  elsif current_user.location.nil?
+	  @yelp = yelpResult({})
   else
-	 @yelp = yelpResult({location: @location})
+    @yelp = yelpResult({location: current_user.location})
   end
 end
 
