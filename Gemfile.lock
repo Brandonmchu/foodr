@@ -29,6 +29,7 @@ GEM
     attr_required (1.0.0)
     bcrypt (3.1.7)
     builder (3.1.4)
+    callsite (0.0.11)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -76,6 +77,10 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    meta_request (0.3.0)
+      callsite
+      rack-contrib
+      railties
     method_source (0.8.2)
     mime-types (1.25.1)
     minitest (4.7.5)
@@ -106,6 +111,8 @@ GEM
       method_source (~> 0.8)
       slop (~> 3.4)
     rack (1.5.2)
+    rack-contrib (1.1.0)
+      rack (>= 0.9.1)
     rack-oauth2 (1.0.8)
       activesupport (>= 2.3)
       attr_required (>= 0.0.5)
@@ -179,6 +186,7 @@ DEPENDENCIES
   geocoder
   jbuilder (~> 1.2)
   jquery-rails
+  meta_request
   omniauth-facebook
   pg
   pry

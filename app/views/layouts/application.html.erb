@@ -2,11 +2,11 @@
 <html>
 <head>
   <title>Foodr</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAqlnYFy9rOGAwU9ws_hL0ZDjQ_lTiJ-Uw&sensor=false"></script>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 	<body class="<%= controller_name %> <%= action_name %>" onload="initialize()">

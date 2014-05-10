@@ -21,29 +21,27 @@
 <!-- changes search parameters-->
  <div id="map-canvas" style="width: 600px; height: 200px;"></div>
   <div>
-    <input id="address" type="textbox" value=<%= current_user.location %>>
+    <%= text_field_tag "address", @location %>
     <input type="button" value="Encode" onclick="codeAddress()">
   </div>
-<%= form_tag root_path, method: :get, id: 'yelp-form' do %>
-  <% if params[:location] %>
-    <%= text_field_tag :location, params[:location] %> 
-  <% else %>
-    <%= text_field_tag :location, current_user.location %> 
-  <% end %>
+
+<%= form_tag root_path, method: :get, id: 'yelp-form', remote: true do %>
+  <%= label_tag "radius" %>
   <%= number_field_tag :radius, 40000 %>
+  <%= label_tag "categories" %>
   <%= text_field_tag :category %>
+  <%= label_tag "deals?" %>
   <%= radio_button_tag :deals, true %>
   <%= radio_button_tag :deals, false %>
+  <%= hidden_field_tag :last_address, @location %>
   <%= hidden_field_tag :init_lat, @init_lat %>
   <%= hidden_field_tag :init_lng, @init_lng %>
-<!--   <%= hidden_field_tag :latitude, '40' %>
-  <%= hidden_field_tag :longitude, '-79' %> -->
   <%= submit_tag "go" %>
 <% end %>
 
 
 <h1>Yelp Stuff</h1>
-<table class="table table-striped">
+<table id="yelp_results" class="table table-striped">
 	<%= render 'home/yelpSingle', yelp: @yelp %>
 </table>
 

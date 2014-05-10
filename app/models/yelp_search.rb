@@ -16,7 +16,7 @@ def self.searchYelp(args)
 	radius = args[:radius] || '40000'
 	deals = args[:deals] || false
 	location = args[:location] || 'Toronto'
-	coordinates = { latitude: location["lat"], longitude: location["lng"] }	
+	coordinates = { latitude: location[:lat], longitude: location[:lng] }	
 	params = { term: 'food',
            	   limit: 10,
            	   sort: 1,

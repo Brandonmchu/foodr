@@ -39,6 +39,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development do
+  gem 'meta_request'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

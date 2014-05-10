@@ -1,6 +1,6 @@
 <% i = 1 %>
 	<% yelp.each do |what| %>
-		<tr>
+		<tr class="yelpSingle">
 			<td><%= i %>. <%= what[:name] %></td>
 			<td>
 				<% what[:categories].each do |cat| %>
@@ -8,9 +8,7 @@
 				<% end %>
 			</td>
 			<td><%= what[:rating] %></td>
-		</tr>
-		<tr>
-			<td><%= link_to what[:url], what[:url], target: "_blank" %></td>
+						<td><%= link_to what[:url], what[:url], target: "_blank" %></td>
 			<td><%= what[:phone] %></td>
 			<td><%= what[:review_count] %></td>
 		</tr>
