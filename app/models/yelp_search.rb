@@ -16,7 +16,7 @@ def self.searchYelp(args)
 	radius = args[:radius] || '40000'
 	deals = args[:deals] || false
 	location = args[:location] || 'Toronto'
-	coordinates = { latitude: 43.653899, longitude: -79.447876 }	
+	coordinates = { latitude: location["lat"], longitude: location["lng"] }	
 	params = { term: 'food',
            	   limit: 10,
            	   sort: 1,
@@ -24,11 +24,7 @@ def self.searchYelp(args)
                radius_filter: radius,
            	   deals: deals
            	 }
-	if coordinates
-		yelpSession.search_by_coordinates(coordinates,params)
-	else 
-		yelpSession.search(location,params)
-	end
+	yelpSession.search_by_coordinates(coordinates,params)
 end
 
 end

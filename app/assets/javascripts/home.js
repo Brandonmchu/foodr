@@ -2,7 +2,9 @@
   var map;
   function initialize() {
     geocoder = new google.maps.Geocoder();
-    var latlng = new google.maps.LatLng(-4.397, 150.644);
+    var lat = document.getElementById("init_lat").value;
+    var lng = document.getElementById("init_lng").value;
+    var latlng = new google.maps.LatLng(lat,lng);
     var mapOptions = {
       zoom: 8,
       center: latlng
@@ -14,7 +16,9 @@
     var address = document.getElementById("address").value;
     geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-        alert(results[0].geometry.location);
+        // $("#latitude").val(results[0].geometry.location.k);
+        // $("#longitude").val(results[0].geometry.location.A);
+        // $("#yelp-form").submit();
         map.setCenter(results[0].geometry.location);
         var marker = new google.maps.Marker({
             map: map,

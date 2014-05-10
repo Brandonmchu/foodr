@@ -12,7 +12,11 @@ class User < ActiveRecord::Base
       user = where(uid: auth.uid, provider: auth.provider).first
     else
       user = User.create!(name: auth.info.name, email: auth.info.email, password: "Admin123", uid: auth.uid, provider: auth.provider)
-      user.update(location: auth.extra.raw_info.location.name) if auth.extra.raw_info.location
+      if auth.extra.raw_info.location
+        user.update(location: auth.extra.raw_info.location.name) 
+      else
+        user.update(location: "Toronto") 
+      end
     end
     user.update(token: auth.credentials.token, secret: auth.credentials.secret)
     return user

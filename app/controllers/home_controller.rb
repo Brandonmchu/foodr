@@ -2,17 +2,21 @@ class HomeController < ApplicationController
 
 def index
 	@userfb = FbGraph::User.fetch(current_user.uid, access_token: current_user.token)
+  @location = current_user.location
+  coords = Geocoder.search(current_user.location)[0].geometry["location"]
+  @init_lat = coords["lat"]
+  @init_lng = coords["lng"]
   if params[:location]
     @yelp = yelpResult({ 
+                         # latitude: params[:latitude],
+                         # longitude: params[:longitude],
                          location: params[:location],
                          radius: params[:radius],
                          category: params[:category],
                          deals: params[:deals]
                       })
-  elsif current_user.location.nil?
-	  @yelp = yelpResult({})
   else
-    @yelp = yelpResult({location: current_user.location})
+    @yelp = yelpResult({location: coords})
   end
 end
 
@@ -38,4 +42,6 @@ private
       phone: l.respond_to?("phone") ? l.phone : "no phone available"
     }}
   end
+
 end
+
