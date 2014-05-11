@@ -12,4 +12,5 @@
  *= require_self
  *= require_tree .
  *= require bootstrap-slider
+ *= require jquery-tablesorter/theme.bootstrap_2
  */

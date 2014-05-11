@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-slider
+//= require jquery-tablesorter
 //= require turbolinks
 //= require_tree .
 

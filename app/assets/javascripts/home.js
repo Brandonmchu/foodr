@@ -34,7 +34,7 @@ function codeAddress() {
 
 function localFilter(distance) {
   $('#yelp_results .yelp-row .yelp-row-dist').each(function(){
-    if (distance*1000 > $(this).text()){
+    if (distance*1000 < $(this).text()){
       $(this).parent().hide();
     }
     else {
@@ -45,9 +45,12 @@ function localFilter(distance) {
 }
 
 $( document ).ready(function() {
+  
   $("#distance_slider").slider();
   $("#distance_slider").on('slide', function(slideEvt) {
     $("#ex6SliderVal").text(slideEvt.value);
     localFilter(slideEvt.value);
   });
+
+  $("#yelp_results").tablesorter();
 });

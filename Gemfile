@@ -7,6 +7,7 @@ gem 'geocoder'
 gem 'devise'
 gem 'fb_graph'
 gem 'bootstrap-slider-rails'
+gem 'jquery-tablesorter'
 
 # Use postgresql as the database for Active Record
 gem 'pg'

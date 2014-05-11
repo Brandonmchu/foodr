@@ -27,26 +27,23 @@
 
 <div class="row">
   <div class="col-xs-12 col-md-8">
-    <input id="distance_slider" type="text" data-slider-min="1" data-slider-max="40" data-slider-step="1" data-slider-value="3"/&t
-    <span id="ex6CurrentSliderValLabel"> Max Distance: <span id="ex6SliderVal">3</span></span>
+    <input id="distance_slider" type="text" data-slider-min="1" data-slider-max="40" data-slider-step="1" data-slider-value="40"/&t
+    <span id="ex6CurrentSliderValLabel"> Max Distance: <span id="ex6SliderVal">40</span>km</span>
   </div>
   <div class="col-xs-6 col-md-4">
   </div>
 </div>
 
-
-
-
 <h1>Yelp Stuff</h1>
-<table id="yelp_results" class="table table-striped">
-  <tr>
+<table id="yelp_results" class="table table-striped tablesorter">
+  <thead>
     <th>Name</th>
     <th>Categories</th>
     <th>URL</th>
     <th>Phone</th>
     <th>Rating</th>
     <th>Distance(m)</th>
-  </tr>
-	<%= render 'home/yelpSingle', yelp: @yelp %>
+  </thead>
+	 <%= render 'home/yelpSingle', yelp: @yelp %>
 </table>
 
