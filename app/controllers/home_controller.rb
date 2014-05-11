@@ -6,7 +6,7 @@ def index
   coords = Geocoder.search(current_user.location)[0].geometry["location"]
   @init_lat = params[:init_lat] || coords["lat"]
   @init_lng = params[:init_lng] || coords["lng"]
-  if params[:init_lat]
+  if params[:init_lat] || params[:radius] || params[:category] || params[:deals] 
     @yelp = yelpResult({ 
                          location: {lat: @init_lat, lng: @init_lng},
                          radius: params[:radius],
@@ -41,7 +41,8 @@ private
       rating: l.respond_to?("rating") ? l.rating : "unrated",
       review_count: l.respond_to?("review_count") ? l.review_count : "no reviews",
       url: l.respond_to?("url") ? l.url : "no url",
-      phone: l.respond_to?("phone") ? l.phone : "no phone available"
+      phone: l.respond_to?("phone") ? l.phone : "no phone available",
+      distance: l.respond_to?("distance") ? l.distance : "no distance available"
     }}
   end
 

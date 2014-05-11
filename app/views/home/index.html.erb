@@ -1,47 +1,52 @@
-<h1>FaceBook Stuff</h1>
-<table class="table table-striped">
-  <tr>
-  	<th>Thing</th>
-  	<th>Details</th>
-  </tr>
-  <tr>
-		<td>Name</td>
-	  <td><%= current_user.name %></td>
-  </tr>
-  <tr>
-	  <td>City</td>
-	  <td><%= current_user.location %></td>
-  </tr>
-  <tr>
-	  <td>Things they Like</td>
-	  <td><%= @userfb.likes.map {|d| d.category} %></td>
-  </tr>
-</table>
-
 <!-- changes search parameters-->
- <div id="map-canvas" style="width: 600px; height: 200px;"></div>
-  <div>
-    <%= text_field_tag "address", @location %>
-    <input type="button" value="Encode" onclick="codeAddress()">
+<div class="row">
+  <div class="col-xs-12 col-md-8">
+    <div style="float:left">
+      <%= label_tag "Where are you?" %>  
+      <%= text_field_tag "address", @location %>
+    </div>
+    <%= form_tag root_path, method: :get, id: 'yelp-form', style:"float:left", remote: true do %>
+      <%= label_tag "radius" %>
+      <%= number_field_tag :radius, 40000 %>
+      <%= label_tag "categories" %>
+      <%= text_field_tag :category %>
+      <%= label_tag "deals?" %>
+      <%= radio_button_tag :deals, true %>
+      <%= radio_button_tag :deals, false %>
+      <%= hidden_field_tag :last_address, @location %>
+      <%= hidden_field_tag :init_lat, @init_lat %>
+      <%= hidden_field_tag :init_lng, @init_lng %>
+      <%= submit_tag "go", style: "display: none;" %>
+    <% end %>
+    <input type="button" value="Search" onclick="codeAddress()" style="float:left;">
   </div>
+  <div class="col-xs-6 col-md-4">
+     <div id="map-canvas" style="width: 600px; height: 200px;"></div>
+  </div>
+</div>
 
-<%= form_tag root_path, method: :get, id: 'yelp-form', remote: true do %>
-  <%= label_tag "radius" %>
-  <%= number_field_tag :radius, 40000 %>
-  <%= label_tag "categories" %>
-  <%= text_field_tag :category %>
-  <%= label_tag "deals?" %>
-  <%= radio_button_tag :deals, true %>
-  <%= radio_button_tag :deals, false %>
-  <%= hidden_field_tag :last_address, @location %>
-  <%= hidden_field_tag :init_lat, @init_lat %>
-  <%= hidden_field_tag :init_lng, @init_lng %>
-  <%= submit_tag "go" %>
-<% end %>
+<div class="row">
+  <div class="col-xs-12 col-md-8">
+    <input id="distance_slider" type="text" data-slider-min="1" data-slider-max="40" data-slider-step="1" data-slider-value="3"/&t
+    <span id="ex6CurrentSliderValLabel"> Max Distance: <span id="ex6SliderVal">3</span></span>
+  </div>
+  <div class="col-xs-6 col-md-4">
+  </div>
+</div>
+
+
 
 
 <h1>Yelp Stuff</h1>
 <table id="yelp_results" class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Categories</th>
+    <th>URL</th>
+    <th>Phone</th>
+    <th>Rating</th>
+    <th>Distance(m)</th>
+  </tr>
 	<%= render 'home/yelpSingle', yelp: @yelp %>
 </table>
 

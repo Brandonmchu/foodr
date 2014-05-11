@@ -1,10 +1,13 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'sass-rails'
 gem 'rails', '4.0.4'
 gem 'geocoder'
 gem 'devise'
 gem 'fb_graph'
+gem 'bootstrap-slider-rails'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 

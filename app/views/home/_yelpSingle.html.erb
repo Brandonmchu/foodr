@@ -1,16 +1,16 @@
 <% i = 1 %>
 	<% yelp.each do |what| %>
-		<tr class="yelpSingle">
+		<tr class="yelp-row">
 			<td><%= i %>. <%= what[:name] %></td>
 			<td>
 				<% what[:categories].each do |cat| %>
 					<%= cat[0] %>,&nbsp;
 				<% end %>
 			</td>
-			<td><%= what[:rating] %></td>
 						<td><%= link_to what[:url], what[:url], target: "_blank" %></td>
 			<td><%= what[:phone] %></td>
-			<td><%= what[:review_count] %></td>
+			<td><%= what[:rating] %> (<%= what[:review_count] %>)</td>
+			<td class="yelp-row-dist"><%= what[:distance].to_i %></td>
 		</tr>
 	<% i += 1 %>
 	<% end %>

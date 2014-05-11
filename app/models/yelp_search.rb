@@ -19,7 +19,7 @@ def self.searchYelp(args)
 	coordinates = { latitude: location[:lat], longitude: location[:lng] }	
 	params = { term: 'food',
            	   limit: 10,
-           	   sort: 1,
+           	   sort: 2,
            	   category_filter: category,
                radius_filter: radius,
            	   deals: deals
